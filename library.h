@@ -1,0 +1,6 @@
+#ifndef CRYSTALUI_LIBRARY_H
+#define CRYSTALUI_LIBRARY_H
+
+void hello();
+
+#endif //CRYSTALUI_LIBRARY_H
