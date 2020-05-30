@@ -9,25 +9,25 @@ add_library(CrystalUI
         ext/glad.cpp
         ext/spng.c
         ext/tinyxml2.cpp
-        src/gl/Vao.cpp
-        src/gl/MeshBuilder.cpp
-        src/shaders/IShader.cpp
-        src/font/FontRenderer.cpp
-        src/io/XmlGuiLoader.cpp
-        src/io/FontLoader.cpp
-        src/base/Container.cpp
-        src/base/Screen.cpp
-        src/base/Dialog.cpp
-        src/base/Component.cpp
-        src/base/ImageComponent.cpp
-        src/components/Label.cpp
-        src/components/Panel.cpp
-        src/components/Button.cpp
-        src/components/TextBox.cpp
-        src/components/CheckBox.cpp
-        src/components/ToolButton.cpp
-        src/GuiRenderer.cpp
-        src/Graphics.cpp
-        src/CrystalUI.cpp)
+        src/crystal/gl/Vao.cpp
+        src/crystal/gl/MeshBuilder.cpp
+        src/crystal/shaders/IShader.cpp
+        src/crystal/font/FontRenderer.cpp
+        src/crystal/io/XmlGuiLoader.cpp
+        src/crystal/io/FontLoader.cpp
+        src/crystal/base/Container.cpp
+        src/crystal/base/Screen.cpp
+        src/crystal/base/Dialog.cpp
+        src/crystal/base/Component.cpp
+        src/crystal/base/ImageComponent.cpp
+        src/crystal/components/Label.cpp
+        src/crystal/components/Panel.cpp
+        src/crystal/components/Button.cpp
+        src/crystal/components/TextBox.cpp
+        src/crystal/components/CheckBox.cpp
+        src/crystal/components/ToolButton.cpp
+        src/crystal/GuiRenderer.cpp
+        src/crystal/Graphics.cpp
+        src/crystal/CrystalUI.cpp)
 
 target_include_directories(CrystalUI PRIVATE libs/glm inc)
