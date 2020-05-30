@@ -51,7 +51,7 @@ The required events are:
 4. `GuiRenderer::on_character_typed`
 5. `GuiRenderer::on_key_event`
 6. `GuiRenderer::layout` (Call when you want to relayout, e.g. when the window size changes.)
-6. `GuiRenderer::draw`  (Call in your render loop)
+6. `CrystalUI::draw`  (Call in your render loop)
 
 Then build a screen, which may look something like this:
 ```xml
@@ -101,7 +101,7 @@ public:
 
 And finally, display the screen:
 ```cpp
-    crystal::CrystalUI::get_instance()->get_gui_renderer()->show_screen(new MenuScreen());
+crystal::CrystalUI::get_instance()->get_gui_renderer()->show_screen(new MenuScreen());
 ```
 
 ## Debugging
