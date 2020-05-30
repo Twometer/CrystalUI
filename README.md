@@ -7,7 +7,7 @@ include it as a subdirectory in CMake:
 
 ```cmake
 add_subdirectory(lib/CrystalUI)
-target_include_directories(yourproject PRIVATE ... lib/CrystalUI/src)
+target_include_directories(yourproject PRIVATE ... lib/CrystalUI/src lib/CrystalUI/inc)
 target_link_libraries(yourproject ... CrystalUI)
 ```
 
@@ -84,7 +84,7 @@ Then build a screen, which may look something like this:
 class MenuScreen : public crystal::Screen {
 
 public:
-    MenuScreen() {
+    MenuScreen() : Screen("mainMenuScreen") {
         crystal::XmlGuiLoader::load(this, "main_menu.xml");
         
         auto btnNewGame = find_component<Button>("btnNewGame");
@@ -103,3 +103,10 @@ And finally, display the screen:
 ```cpp
     crystal::CrystalUI::get_instance()->get_gui_renderer()->show_screen(new MenuScreen());
 ```
+
+## Debugging
+By default, CrystalUI writes debug logs to STDOUT. To disable this, write
+```cpp
+#define CRYSTALUI_DEBUGLOG false
+```
+before you first include CrystalUI
