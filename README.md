@@ -84,7 +84,7 @@ Then build a screen, which may look something like this:
 class MenuScreen : public crystal::Screen {
 
 public:
-    MenuScreen() {
+    MenuScreen() : Screen("mainMenuScreen") {
         crystal::XmlGuiLoader::load(this, "main_menu.xml");
         
         auto btnNewGame = find_component<Button>("btnNewGame");
