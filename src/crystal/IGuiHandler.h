@@ -20,6 +20,19 @@ namespace crystal {
 
         virtual glm::vec2 get_viewport_size() = 0;
 
+        // Some events that may be useful //
+        virtual void on_screen_shown(Screen *screen) {
+        }
+
+        virtual void on_screen_closed() {
+        }
+
+        virtual void on_dialog_shown(Dialog *dialog) {
+        }
+
+        virtual void on_dialog_closed() {
+        }
+
     };
 }
 

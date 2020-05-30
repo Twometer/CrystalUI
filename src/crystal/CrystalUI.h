@@ -27,6 +27,8 @@ namespace crystal {
 
         static void initialize(IGuiHandler *handler, const std::string &fontPath);
 
+        IGuiHandler *get_gui_handler() const;
+
         GuiRenderer *get_gui_renderer() const;
 
         FontRenderer *get_font_renderer() const;

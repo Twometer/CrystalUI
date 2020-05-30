@@ -3,20 +3,29 @@
 //
 
 #include "GuiRenderer.h"
+#include "CrystalUI.h"
 
 namespace crystal {
     void GuiRenderer::show_screen(Screen *screen) {
         this->currentScreen = screen;
 
-        if (screen != nullptr)
+        if (screen != nullptr) {
             screen->layout();
+            CrystalUI::get_instance()->get_gui_handler()->on_screen_shown(screen);
+        } else {
+            CrystalUI::get_instance()->get_gui_handler()->on_screen_closed();
+        }
     }
 
     void GuiRenderer::show_dialog(Dialog *dialog) {
         this->currentDialog = dialog;
 
-        if (dialog != nullptr)
+        if (dialog != nullptr) {
             dialog->layout();
+            CrystalUI::get_instance()->get_gui_handler()->on_dialog_shown(dialog);
+        } else {
+            CrystalUI::get_instance()->get_gui_handler()->on_dialog_closed();
+        }
     }
 
     void GuiRenderer::draw() {

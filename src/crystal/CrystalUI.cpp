@@ -22,6 +22,10 @@ namespace crystal {
         instance->guiRenderer = new GuiRenderer();
     }
 
+    IGuiHandler *CrystalUI::get_gui_handler() const {
+        return guiHandler;
+    }
+
     GuiRenderer *CrystalUI::get_gui_renderer() const {
         return guiRenderer;
     }
