@@ -8,6 +8,8 @@
 #include "io/FontLoader.h"
 
 namespace crystal {
+    CrystalUI *CrystalUI::instance = nullptr;
+
     CrystalUI *CrystalUI::get_instance() {
         return instance;
     }
