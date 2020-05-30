@@ -7,7 +7,7 @@ include it as a subdirectory in CMake:
 
 ```cmake
 add_subdirectory(lib/CrystalUI)
-target_include_directories(yourproject PRIVATE ... lib/CrystalUI/src)
+target_include_directories(yourproject PRIVATE ... lib/CrystalUI/src lib/CrystalUI/inc)
 target_link_libraries(yourproject ... CrystalUI)
 ```
 
