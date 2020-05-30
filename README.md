@@ -85,21 +85,21 @@ class MenuScreen : public crystal::Screen {
 
 public:
     MenuScreen() {
-		crystal::XmlGuiLoader::load(this, "main_menu.xml");
-		
-		auto btnNewGame = find_component<Button>("btnNewGame");
-		auto btnLoadGame = find_component<Button>("btnLoadGame");
-		auto btnExitGame = find_component<Button>("btnExitGame");
-		
-		btnNewGame->set_click_listener([]() {
-			// Do something
-		});
-	}
+        crystal::XmlGuiLoader::load(this, "main_menu.xml");
+        
+        auto btnNewGame = find_component<Button>("btnNewGame");
+        auto btnLoadGame = find_component<Button>("btnLoadGame");
+        auto btnExitGame = find_component<Button>("btnExitGame");
+        
+        btnNewGame->set_click_listener([]() {
+            // Do something
+        });
+    }
 
 };
 ```
 
 And finally, display the screen:
 ```cpp
-	crystal::CrystalUI::get_instance()->get_gui_renderer()->show_screen(new MenuScreen());
+    crystal::CrystalUI::get_instance()->get_gui_renderer()->show_screen(new MenuScreen());
 ```
