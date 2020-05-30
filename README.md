@@ -103,3 +103,10 @@ And finally, display the screen:
 ```cpp
     crystal::CrystalUI::get_instance()->get_gui_renderer()->show_screen(new MenuScreen());
 ```
+
+## Debugging
+By default, CrystalUI writes debug logs to STDOUT. To disable this, write
+```cpp
+#define CRYSTALUI_DEBUGLOG false
+```
+before you first include CrystalUI
