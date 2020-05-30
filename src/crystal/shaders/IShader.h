@@ -35,6 +35,9 @@ namespace crystal {
 
         static void unbind();
 
+    private:
+        static void check_shader(const std::string &name, GLuint shader);
+
     };
 }
 

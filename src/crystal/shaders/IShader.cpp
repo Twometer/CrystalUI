@@ -3,6 +3,7 @@
 //
 
 #include "IShader.h"
+#include "../util/Logger.h"
 
 namespace crystal {
     int IShader::get_location(const std::string &uniform) const {
@@ -38,6 +39,7 @@ namespace crystal {
     }
 
     void IShader::initialize(const std::string &vertex, const std::string &fragment) {
+        Logger::info("Loading shader");
         auto vertexSourcePtr = vertex.c_str();
         auto fragmentSourcePtr = fragment.c_str();
 
@@ -46,10 +48,12 @@ namespace crystal {
         auto vertexShader = glCreateShader(GL_VERTEX_SHADER);
         glShaderSource(vertexShader, 1, &vertexSourcePtr, nullptr);
         glCompileShader(vertexShader);
+        check_shader(vertex, vertexShader);
 
         auto fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
         glShaderSource(fragmentShader, 1, &fragmentSourcePtr, nullptr);
         glCompileShader(fragmentShader);
+        check_shader(fragment, fragmentShader);
 
         glAttachShader(program, vertexShader);
         glAttachShader(program, fragmentShader);
@@ -65,5 +69,15 @@ namespace crystal {
         id = program;
 
         bind_uniforms();
+    }
+
+    void IShader::check_shader(const std::string &name, GLuint shader) {
+        int infoLogLength;
+        glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLogLength);
+        if (infoLogLength > 0) {
+            char errorMsg[infoLogLength + 1];
+            glGetShaderInfoLog(shader, infoLogLength, nullptr, errorMsg);
+            Logger::error(name + ": " + std::string(errorMsg));
+        }
     }
 }

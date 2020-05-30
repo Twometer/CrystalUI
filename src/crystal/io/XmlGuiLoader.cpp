@@ -9,6 +9,7 @@
 #include "../components/TextBox.h"
 #include "../components/CheckBox.h"
 #include "../components/ToolButton.h"
+#include "../util/Logger.h"
 
 namespace crystal {
     using namespace tinyxml2;
@@ -19,7 +20,7 @@ namespace crystal {
 
         XMLElement *root = doc.FirstChildElement("Screen");
         if (root == nullptr) {
-            //         Logger::error("Cannot load screen: Root node not found");
+            Logger::error("Cannot load screen: Root node not found");
             return;
         }
 
@@ -49,15 +50,15 @@ namespace crystal {
             Component *uiChild = instantiate(child->Name(), child->Attribute("Id"));
 
             if (uiChild == nullptr) {
-                //  Logger::error("Invalid component: " + std::string(child->Name()));
+                Logger::error("Invalid component: " + std::string(child->Name()));
                 continue;
             }
 
             if (!child->NoChildren()) {
                 auto *container = dynamic_cast<Container *>(uiChild);
                 if (!container) {
-                    // Logger::error(
-                    //          "Tried to add components to a non-container object of type " + std::string(child->Name()));
+                    Logger::error(
+                            "Tried to add components to a non-container object of type " + std::string(child->Name()));
                     continue;
                 }
 
@@ -106,7 +107,7 @@ namespace crystal {
         std::string src = std::string(srcPtr);
         size_t separatorPos = src.find(',');
         if (separatorPos == std::string::npos) {
-            //  Logger::error("Cannot parse " + src + " as a 2D vector");
+            Logger::error("Cannot parse " + src + " as a 2D vector");
             return {0, 0};
         }
         float x = std::stof(src.substr(0, separatorPos));
@@ -126,6 +127,8 @@ namespace crystal {
             return Alignment::END;
         if (strcmp(src, "STRETCH") == 0)
             return Alignment::STRETCH;
+
+        Logger::warn("Unknown alignment, defaulting to START");
         return Alignment::START;
     }
 }

@@ -26,6 +26,7 @@ add_library(CrystalUI
         src/crystal/components/TextBox.cpp
         src/crystal/components/CheckBox.cpp
         src/crystal/components/ToolButton.cpp
+        src/crystal/util/Logger.cpp
         src/crystal/GuiRenderer.cpp
         src/crystal/Graphics.cpp
         src/crystal/CrystalUI.cpp)
